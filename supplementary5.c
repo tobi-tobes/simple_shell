@@ -70,7 +70,7 @@ int handle_cmd_sep(char *string)
 				child_pid = fork();
 				if (child_pid == -1)
 				{
-					perror("./hsh: 1");
+					perror("./hsh");
 					return (2);
 				}
 				if (child_pid == 0)

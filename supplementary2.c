@@ -53,14 +53,14 @@ int execute(char **tokens)
 
 	if (child_pid == -1)
 	{
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (2);
 	}
 	if (child_pid == 0)
 	{
 		if (execve(tokens[0], tokens, environ) == -1)
 		{
-			perror("./hsh: 1");
+			perror("./hsh");
 			return (2);
 		}
 	}

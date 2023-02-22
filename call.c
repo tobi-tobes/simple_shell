@@ -29,7 +29,7 @@ int call(char **args)
 
 	else
 	{
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (2);
 	}
 }

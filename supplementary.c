@@ -70,7 +70,7 @@ int word_count(char *str, char del)
 char **_strtok(char **args, char *string, char del, int length)
 {
 	int i = 0, j, k = 0, count = 0;
-	char sub_buf[1024];
+	char sub_buf[BUFSIZE];
 
 	for (j = 0; string[j] != '\0'; j++)
 	{

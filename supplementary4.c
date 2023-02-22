@@ -17,7 +17,7 @@ char **rmv_from_array(char **array, unsigned int position)
 	np = malloc(sizeof(char *) * new_size);
 	if (np == NULL)
 	{
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (array);
 	}
 	i = j = 0;
@@ -30,7 +30,7 @@ char **rmv_from_array(char **array, unsigned int position)
 			if (np[j] == NULL)
 			{
 				free(np);
-				perror("./hsh: 1");
+				perror("./hsh");
 				return (array);
 			}
 			_strcpy(np[j], array[i]);
@@ -42,7 +42,7 @@ char **rmv_from_array(char **array, unsigned int position)
 	if (np[i] == NULL)
 	{
 		free(np);
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (array);
 	}
 	np[i] = NULL;
@@ -66,7 +66,7 @@ char **add_to_array(char **array, unsigned int new_size, char *buffer)
 	np = malloc(sizeof(char *) * new_size);
 	if (np == NULL)
 	{
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (array);
 	}
 	i = 0;
@@ -76,7 +76,7 @@ char **add_to_array(char **array, unsigned int new_size, char *buffer)
 		np[i] = malloc((sizeof(char) * _strlen(array[i])) + 1);
 		if (np[i] == NULL)
 		{
-			perror("./hsh: 1");
+			perror("./hsh");
 			free(np);
 			return (array);
 		}
@@ -87,7 +87,7 @@ char **add_to_array(char **array, unsigned int new_size, char *buffer)
 	if (np[i] == NULL)
 	{
 		free_array(np);
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (array);
 	}
 	_strcpy(np[i], buffer);
@@ -95,7 +95,7 @@ char **add_to_array(char **array, unsigned int new_size, char *buffer)
 	if (np[i + 1] == NULL)
 	{
 		free(np);
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (array);
 	}
 	np[i + 1] = NULL;
@@ -139,7 +139,7 @@ char *_update_env_var(char *env_var, char *variable)
 
 	if (np == NULL)
 	{
-		perror("./hsh: 1");
+		perror("./hsh");
 		return (env_var);
 	}
 	_strcpy(np, buffer);
