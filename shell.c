@@ -17,7 +17,12 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
 	while (loop == 1 || loop == 2)
 	{
 		write(STDOUT_FILENO, "$ ", 2);
-		if (getline(&buffer, &n, stdin) >= 0)
+		if (getline(&buffer, &n, stdin) == -1)
+		{
+			write(STDOUT_FILENO, "\n", 1);
+			return (0);
+		}
+		else
 		{
 			if (buffer[0] != '\0' && strcmp(buffer, "\n") != 0)
 			{
@@ -33,6 +38,8 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
 			}
 		}
 		free(buffer);
+		buffer = NULL;
+		n = 0;
 	}
 	exit(loop);
 }
