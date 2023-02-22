@@ -21,7 +21,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
 		if (mode == 1)
 			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&buffer, &n, stdin) == -1)
-		{;
+		{
 			return (0);
 		}
 		else
