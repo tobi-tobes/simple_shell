@@ -9,17 +9,19 @@
  */
 int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
 {
-	int loop = 1, check_mul_args;
+	int loop = 1, check_mul_args, mode;
 	char *buffer = NULL;
 	size_t n = 0;
 	char **tokens;
 
 	while (loop == 1 || loop == 2)
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		mode = isatty(STDIN_FILENO);
+
+		if (mode == 1)
+			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&buffer, &n, stdin) == -1)
-		{
-			write(STDOUT_FILENO, "\n", 1);
+		{;
 			return (0);
 		}
 		else
