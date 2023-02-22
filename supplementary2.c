@@ -47,21 +47,27 @@ int _strcmp(char *s1, char *s2)
 int execute(char **tokens)
 {
 	pid_t child_pid;
+	int status;
 
 	child_pid = fork();
 
 	if (child_pid == -1)
-		return (-1);
-
+	{
+		perror("./hsh: 1");
+		return (2);
+	}
 	if (child_pid == 0)
 	{
 		if (execve(tokens[0], tokens, environ) == -1)
-			return (-1);
+		{
+			perror("./hsh: 1");
+			return (2);
+		}
 	}
 	else
 		wait(&status);
 
-	return (0);
+	return (1);
 }
 
 /**
@@ -78,7 +84,27 @@ int _atoi(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		num = (num * 10) + (s[i] - '0');
+		if (s[i] >= '0' && s[i] <= '9')
+			num = (num * 10) + (s[i] - '0');
+		else
+			return (-1);
 	}
 	return (num);
+}
+
+/**
+ * check_num_arg - checks the number of arguments in an array
+ * @args: array of arguments
+ *
+ * Return: number of arguments
+ */
+int check_num_arg(char **args)
+{
+	int i, length = 0;
+
+	for (i = 0; args[i] != NULL; i++)
+	{
+		length++;
+	}
+	return (length);
 }
