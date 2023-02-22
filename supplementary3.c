@@ -128,6 +128,9 @@ int search_PATH(char **args)
 	int i;
 	struct stat st;
 
+	if (strstr(args[0], "/") != NULL)
+		return (1);
+
 	path = _getenv("PATH");
 	path_dir = tokenize(path, ':');
 
