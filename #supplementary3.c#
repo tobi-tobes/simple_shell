@@ -8,7 +8,7 @@
  */
 char *_getenv(char *variable)
 {
-	int i, j, found;
+8x	int i, j, found;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{

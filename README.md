@@ -1,8 +1,2 @@
-# SIMPLE SHELL PROJECT
-_printf is a variadic function that takes a required argument, the format string, which may contain conversion specifiers that tell the function the number and types of additional arguments as well as how to format them. 
-
-## DESCRIPTION
-Conversion specifiers are preceded by a '%' character. Other characters in the format string are printed to standard output as is. _printf also returns the number of characters printed. Generally, the order in which conversion specifiers are encountered in the format string should match the position of the variable arguments. 
-
-## HOW IT WORKS
-_print uses a struct containing the declaration of a pointer to a char and a pointer to a function. When the function iterates through the struct, this will tell _printf how to output its arguments when it encounters a conversion specifier.
+# SIMPLE SHELL PROJECT: HSH
+HSH is a simple implementation of a shell written in C language. The basic functionality of the shell is to display a prompt, read a line of input given by the user, parse the input into individual tokens, search for the tokens in the PATH or in the built-in commands, and execute the command before looping back to the prompt.

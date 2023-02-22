@@ -78,6 +78,8 @@ char **_strtok(char **args, char *string, char del, int length)
 		{
 			sub_buf[k] = '\0';
 			args[i] = malloc((sizeof(char) * count) + 1);
+			if (args[i] == NULL)
+				return (NULL);
 			strcpy(args[i], sub_buf);
 			count = k = 0;
 			i++;
@@ -95,13 +97,10 @@ char **_strtok(char **args, char *string, char del, int length)
 	}
 	sub_buf[k] = '\0';
 	args[i] = malloc((sizeof(char) * count) + 1);
-	_strcpy(args[i], sub_buf);
-
-	i++;
-	args[i] = malloc(sizeof(char *));
-
 	if (args[i] == NULL)
 		return (NULL);
+	_strcpy(args[i], sub_buf);
+	i++;
 	args[i] = NULL;
 
 	return (args);
