@@ -8,9 +8,11 @@
  */
 void free_array(char **array)
 {
-	int i;
+	int i, num_args;
 
-	for (i = 0; array[i] != NULL; i++)
+	num_args = check_num_arg(array);
+
+	for (i = 0; i < num_args; i++)
 	{
 		free(array[i]);
 	}

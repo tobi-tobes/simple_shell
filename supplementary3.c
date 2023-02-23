@@ -106,8 +106,8 @@ char **_update(char **args, char *path)
 {
 	unsigned int oldsize, newsize;
 
-	oldsize = _strlen(args[0]);
-	newsize = _strlen(path);
+	oldsize = _strlen(args[0]) + 1;
+	newsize = _strlen(path) + 1;
 	args[0] = _realloc(args[0], oldsize, newsize);
 
 	strcpy(args[0], path);
@@ -124,7 +124,7 @@ int search_PATH(char **args)
 {
 	char *path;
 	char **path_dir;
-	char cwd_path[BUFSIZE];
+	char cwd_path[BUFSIZE], path_buf[BUFSIZE];
 	int i;
 	struct stat st;
 
@@ -132,7 +132,8 @@ int search_PATH(char **args)
 		return (1);
 
 	path = _getenv("PATH");
-	path_dir = tokenize(path, ':');
+	_strcpy(path_buf, path);
+	path_dir = tokenize(path_buf, ':');
 
 	for (i = 0; path_dir[i] != NULL; i++)
 	{
