@@ -35,14 +35,12 @@ int cd_getenv(char *variable)
  *
  * Return: updated PWD
  */
-char *update_pwd(char *new_value)
+void update_pwd(char *new_value)
 {
 	int loc;
 
 	loc = cd_getenv("PWD");
 	environ[loc] = _update_env_var(environ[loc], new_value);
-
-	return (environ[loc]);
 }
 
 /**
@@ -122,4 +120,38 @@ int chck_mul_cmds(char *string)
 		return (handle_cmd_sep(buffer));
 
 	return (0);
+}
+
+/**
+ * reassign_environ - makes a copy of environ array for program's use
+ * @environ: environ
+ *
+ * Return: a copy of environ variable or the original environ if failure
+ */
+char **reassign_environ(char **array)
+{
+	char **_environ;
+	int size, i = 0;
+
+	size = check_num_arg(array);
+	_environ = malloc((sizeof(char *) * size) + 1);
+
+	if (_environ == NULL)
+		return (array);
+
+	while (i < size)
+	{
+		_environ[i] = malloc((sizeof(char) * _strlen(array[i])) + 1);
+
+		if (_environ[i] == NULL)
+		{
+			free(_environ);
+			return (array);
+		}
+		_strcpy(_environ[i], array[i]);
+		i++;
+	}
+	_environ[i] = NULL;
+
+	return (_environ);
 }

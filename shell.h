@@ -52,9 +52,10 @@ int handle_cmd_sep(char *string);
 int handle_log_and(char *string);
 int handle_log_or(char *string);
 int cd_getenv(char *variable);
-char *update_pwd(char *new_value);
+void update_pwd(char *new_value);
 int hsh_cd(char **args);
 int chck_mul_cmds(char *string);
 int call(char **args);
+char **reassign_environ(char **environ);
 
 #endif

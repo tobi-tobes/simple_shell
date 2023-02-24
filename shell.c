@@ -14,6 +14,8 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
 	size_t n = 0;
 	char **tokens;
 
+	environ = reassign_environ(environ);
+
 	while (loop == 1 || loop == 2)
 	{
 		mode = isatty(STDIN_FILENO);
@@ -43,5 +45,6 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
 		buffer = NULL;
 		n = 0;
 	}
+	free_array(environ);
 	exit(loop);
 }

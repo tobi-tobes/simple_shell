@@ -143,9 +143,13 @@ int search_PATH(char **args)
 		if (stat(cwd_path, &st) == 0)
 		{
 			_update(args, cwd_path);
+			free_array(path_dir);
+			path = NULL;
 			return (1);
 		}
 	}
 	free_array(path_dir);
+	path = NULL;
+
 	return (0);
 }

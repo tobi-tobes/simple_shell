@@ -160,6 +160,7 @@ int hsh_cd(char **args)
 		if (_strcmp(args[1], "-") == 0)
 		{
 			write(STDOUT_FILENO, previous, _strlen(previous));
+			write(STDOUT_FILENO, "\n", 1);
 			_strcpy(next_buf, previous);
 		}
 		else

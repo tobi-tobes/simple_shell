@@ -38,14 +38,8 @@ char **rmv_from_array(char **array, unsigned int position)
 		}
 		i++;
 	}
-	np[i] = malloc(sizeof(char *));
-	if (np[i] == NULL)
-	{
-		free(np);
-		perror("./hsh");
-		return (array);
-	}
 	np[i] = NULL;
+	free_array(array);
 
 	return (np);
 }
@@ -86,19 +80,14 @@ char **add_to_array(char **array, unsigned int new_size, char *buffer)
 	np[i] = malloc((sizeof(char) * _strlen(buffer)) + 1);
 	if (np[i] == NULL)
 	{
-		free_array(np);
-		perror("./hsh");
-		return (array);
-	}
-	_strcpy(np[i], buffer);
-	np[i + 1] = malloc(sizeof(char *));
-	if (np[i + 1] == NULL)
-	{
 		free(np);
 		perror("./hsh");
 		return (array);
 	}
+	_strcpy(np[i], buffer);
 	np[i + 1] = NULL;
+	free_array(array);
+
 	return (np);
 }
 
@@ -143,6 +132,7 @@ char *_update_env_var(char *env_var, char *variable)
 		return (env_var);
 	}
 	_strcpy(np, buffer);
+	free(env_var);
 
 	return (np);
 }
