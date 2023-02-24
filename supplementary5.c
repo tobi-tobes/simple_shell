@@ -124,7 +124,7 @@ int chck_mul_cmds(char *string)
 
 /**
  * reassign_environ - makes a copy of environ array for program's use
- * @environ: environ
+ * @array: environ
  *
  * Return: a copy of environ variable or the original environ if failure
  */
