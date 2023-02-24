@@ -134,7 +134,7 @@ char **reassign_environ(char **array)
 	int size, i = 0;
 
 	size = check_num_arg(array);
-	_environ = malloc((sizeof(char *) * size) + 1);
+	_environ = malloc(sizeof(char *) * (size + 1));
 
 	if (_environ == NULL)
 		return (array);
